@@ -4,15 +4,18 @@ class Message < ActiveRecord::Base
   private
 
   def send_sms
-
+    begin
       response = RestClient::Request.new(
       :method => :post,
       :url => 'https://api.twilio.com/2010-04-01/Accounts/AC4cd1074a87b255c311152ea873ddd453/Messages.json',
-      :user => 'AC4cd1074a87b255c311152ea873ddd453',
-      :password => '868d18b2191eeda4c34f263c3bcfc7f1',
+      :user => ENV['TWILIO_ACCOUNT_SID'],
+      :password => ENV['TWILIO_AUTH_TOKEN'],
       :payload => { :Body => body,
                     :From => from,
                     :To => to }
       ).execute
+    rescue
+      throw(:abort)
+    end
   end
 end
