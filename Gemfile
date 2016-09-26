@@ -11,12 +11,15 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'rest-client'
+gem 'vcr'
+gem 'webmock'
 
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'launchy'
   gem 'pry'
+  gem 'pry-debugger'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'factory_girl_rails'
@@ -24,10 +27,6 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
-group :test do
-  gem 'vcr'
-  gem 'webmock' 
-end
 
 group :development do
   gem 'web-console'
